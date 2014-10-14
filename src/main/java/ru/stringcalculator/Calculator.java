@@ -3,12 +3,17 @@ package ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text) {
-		String[] numbers = text.split(",");
 		
 		if (text.equals(""))
 			return 0;
 		else if (text.contains(","))  {
-			return toInt(numbers[0]) + toInt(numbers[1]);
+			String[] numbers = text.split(",");
+			int sum = 0;
+			
+			for (String number: numbers)
+				sum += toInt(number);
+			
+			return sum;
 		}
 		else
 			return 1;
