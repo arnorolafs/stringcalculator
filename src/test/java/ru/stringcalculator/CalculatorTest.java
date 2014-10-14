@@ -23,5 +23,4 @@ public class CalculatorTest {
 	public void testTwoNumbers() {
 		assertEquals(3, Calculator.add("1,2"));
 	}
-	
 }
