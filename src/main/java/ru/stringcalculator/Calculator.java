@@ -1,4 +1,4 @@
-package ru.stringcalculator;
+package java.ru.stringcalculator;
 
 public class Calculator {
 

@@ -1,4 +1,4 @@
-﻿package ru.stringcalculator;
+﻿package java.ru.stringcalculator;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
