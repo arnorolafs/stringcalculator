@@ -21,6 +21,15 @@ public class Calculator {
 			return 1;
 	}
 	
+	private static int getSum(String[] numbers) {
+			int sum = 0;
+			
+			for (String number: numbers)
+				sum += toInt(number);
+			
+			return sum;
+	}
+	
 	private static int toInt(String number) {
 		return Integer.parseInt(number);
 	}
