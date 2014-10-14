@@ -8,17 +8,9 @@ public class Calculator {
 		
 		if (text.equals(""))
 			return 0;
-		else if (text.contains(DELIMITER))  {
-			String[] numbers = text.split(DELIMITER);
-			int sum = 0;
-			
-			for (String number: numbers)
-				sum += toInt(number);
-			
-			return sum;
+		else  {
+			return getSum(text.split(DELIMITER));
 		}
-		else
-			return 1;
 	}
 	
 	private static int getSum(String[] numbers) {
