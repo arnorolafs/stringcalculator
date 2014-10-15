@@ -38,13 +38,17 @@ public class CalculatorTest {
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 	
-	
 	@Rule 
 	public ExpectedException thrown = ExpectedException.none();
 	
 	@Test
-	public void throwsExceptionForNegativeNumber() {
+	public void throwsExceptionForNegativeNumbers() {
 		thrown.expect(IllegalArgumentException.class);
 		Calculator.add("-1,-2,2");
+	}
+	
+	@Test
+	public void ignoreNumbersOverThousand() {
+		assertEquals(2, Calculator.add("1001, 2"));
 	}
 }

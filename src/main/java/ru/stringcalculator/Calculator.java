@@ -3,6 +3,7 @@ package ru.stringcalculator;
 public class Calculator {
 
 	private static String DELIMITER = ",|\n";
+	private static final int MAX_NUMBER = 1000;
 	
 	public static int add(String text) {
 		setDelimiter(text);
@@ -27,12 +28,20 @@ public class Calculator {
 	
 	private static int getSum(String[] numbers) {
 			int sum = 0;
-			String[] negatives;
 			
-			for (String number: numbers) 
-				sum += toInt(number);
+			for (String number: numbers) {
+				int num = toInt(number);
+				sum += ignoreToBig(num);
+			}
 			
 			return sum;
+	}
+	
+	public static int ignoreToBig(int number) {
+		if (number > MAX_NUMBER)
+			return 0;
+		else
+			return number;
 	}
 	
 	private static int toInt(String number) {
