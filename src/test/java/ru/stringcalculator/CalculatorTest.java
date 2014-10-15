@@ -28,4 +28,10 @@ public class CalculatorTest {
 	public void testMultipleNumbers() {
 		assertEquals(6, Calculator.add("1,2\n3"));
 	}
+	
+	/*
+	public void testHandleDifferentDelimiters() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+	*/
 }

@@ -4,13 +4,17 @@ public class Calculator {
 
 	private static final String DELIMITER = ",|\n";
 	
+	
 	public static int add(String text) {
 		
-		if (text.equals(""))
-			return 0;
-		else  {
-			return getSum(text.split(DELIMITER));
-		}
+		return getSum(getNumbers(text));
+	}
+	
+	private static String[] getNumbers(String numbers) {
+		if (numbers.isEmpty())
+			return new String[0];
+		else
+			return numbers.split(DELIMITER);
 	}
 	
 	private static int getSum(String[] numbers) {
