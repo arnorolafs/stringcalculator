@@ -2,7 +2,7 @@ package ru.stringcalculator;
 
 public class Calculator {
 
-	private static final String DELIMITER = ",";
+	private static final String DELIMITER = ",|\n";
 	
 	public static int add(String text) {
 		
