@@ -45,6 +45,6 @@ public class CalculatorTest {
 	@Test
 	public void throwsExceptionForNegativeNumber() {
 		thrown.expect(IllegalArgumentException.class);
-		Calculator.add("-1");
+		Calculator.add("-1,-2,2");
 	}
 }
