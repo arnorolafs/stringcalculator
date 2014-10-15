@@ -2,12 +2,21 @@ package ru.stringcalculator;
 
 public class Calculator {
 
-	private static final String DELIMITER = ",|\n";
-	
+	private static String DELIMITER = ",|\n";
 	
 	public static int add(String text) {
+		setDelimiter(text);
 		
 		return getSum(getNumbers(text));
+	}
+	
+	private static void setDelimiter(String text) {
+		if (text.contains("//")) {
+			int starting_index = text.indexOf("/") + 2;
+			int ending_index = text.indexOf("\n");
+			String added_delimiter = "|/|" + text.substring(starting_index, ending_index);
+			DELIMITER += added_delimiter;
+		}
 	}
 	
 	private static String[] getNumbers(String numbers) {
