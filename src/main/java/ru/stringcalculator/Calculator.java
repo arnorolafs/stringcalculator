@@ -36,7 +36,8 @@ public class Calculator {
 	}
 	
 	private static int toInt(String number) {
-		return Integer.parseInt(number);
+		try {
+			return Integer.parseInt(number);
 		} catch (NumberFormatException e) {
 			return 0;
 		}
