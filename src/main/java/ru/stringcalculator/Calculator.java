@@ -6,7 +6,6 @@ public class Calculator {
 	
 	public static int add(String text) {
 		setDelimiter(text);
-		
 		return getSum(getNumbers(text));
 	}
 	
@@ -28,8 +27,9 @@ public class Calculator {
 	
 	private static int getSum(String[] numbers) {
 			int sum = 0;
+			String[] negatives;
 			
-			for (String number: numbers)
+			for (String number: numbers) 
 				sum += toInt(number);
 			
 			return sum;
@@ -37,7 +37,9 @@ public class Calculator {
 	
 	private static int toInt(String number) {
 		try {
-			return Integer.parseInt(number);
+			int num = Integer.parseInt(number);
+			if (num < 0) throw new IllegalArgumentException("Negatives not allowed: " + num);
+			return num;
 		} catch (NumberFormatException e) {
 			return 0;
 		}
