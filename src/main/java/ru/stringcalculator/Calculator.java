@@ -6,15 +6,15 @@ import java.util.regex.Pattern;
 public class Calculator {
 
 	private static final String PREDEFINED_DELIMITER = ",|\n";
-	private static final String USER_DEFINED_DELIMITER_REGEX_PATTERN = "^//((.)|(\\[(.+?)\\])+)\n(.*)";
-	private static final int REGEX_NUMBER_OF_USER_DEFINED_SINGLE_CHAR_DELIMITER = 2;
-	private static final int REGEX_NUMBER_OF_USER_DEFINED_MULTIPLE_CHAR_DELIMITERS = 4;
+	private static final String DELIMITER_REGEX_PATTERN = "^//((.)|(\\[(.+?)\\])+)\n(.*)";
+	private static final int REGEX_NUMBER_OF_SINGLE_CHAR_DELIMITER = 2;
+	private static final int REGEX_NUMBER_OF_MULTIPLE_CHAR_DELIMITERS = 4;
 	private static final int REGEX_NUMBER_OF_NUMBER_STRING = 5;
 	
 	private static final int MAX_NUMBER = 1000;
 	
 	public static int add(String text) {
-		Matcher m = Pattern.compile(USER_DEFINED_DELIMITER_REGEX_PATTERN).matcher(text);
+		Matcher m = Pattern.compile(DELIMITER_REGEX_PATTERN).matcher(text);
 		String delimiters = getDelimiter(m);
 		String numberString = getNumberString(text, m.reset());
 
@@ -39,7 +39,7 @@ public class Calculator {
 	}
 	
 	private static String getUserDefinedDelimiter(Matcher m) {
-		if (m.group(REGEX_NUMBER_OF_USER_DEFINED_SINGLE_CHAR_DELIMITER) != null) {
+		if (m.group(REGEX_NUMBER_OF_SINGLE_CHAR_DELIMITER) != null) {
 			return getUserDefinedSingleCharDelimiter(m);
 		} else {
 			return getUserDefinedMultipleCharDelimiter(m);
@@ -47,7 +47,7 @@ public class Calculator {
 	}
 	
 	private static String getUserDefinedSingleCharDelimiter(Matcher m) {
-		return Pattern.quote(m.group(REGEX_NUMBER_OF_USER_DEFINED_SINGLE_CHAR_DELIMITER));
+		return Pattern.quote(m.group(REGEX_NUMBER_OF_SINGLE_CHAR_DELIMITER));
 	}
 	
 	private static String getUserDefinedMultipleCharDelimiter(Matcher m) {
