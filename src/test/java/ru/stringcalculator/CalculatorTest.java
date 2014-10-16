@@ -51,4 +51,6 @@ public class CalculatorTest {
 	public void ignoreNumbersOverThousand() {
 		assertEquals(2, Calculator.add("1001,2"));
 	}
+	
+	
 }

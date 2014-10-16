@@ -37,6 +37,15 @@ public class Calculator {
 			return sum;
 	}
 	
+	private static int toInt(String number) {
+		try {
+			throwIllegalArgumentException(number);
+			return Integer.parseInt(number);
+		} catch (NumberFormatException e) {
+			return 0;
+		}
+	}
+	
 	public static int ignoreToBig(int number) {
 		if (number > MAX_NUMBER)
 			return 0;
@@ -44,13 +53,8 @@ public class Calculator {
 			return number;
 	}
 	
-	private static int toInt(String number) {
-		try {
-			int num = Integer.parseInt(number);
-			if (num < 0) throw new IllegalArgumentException("Negatives not allowed: " + num);
-			return num;
-		} catch (NumberFormatException e) {
-			return 0;
-		}
+	public static void  throwIllegalArgumentException(String number) {
+		int num = Integer.parseInt(number);
+		if (num < 0) throw new IllegalArgumentException("Negatives not allowed: " + num);
 	}
 }
