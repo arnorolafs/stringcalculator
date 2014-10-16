@@ -51,7 +51,7 @@ public class Calculator {
 	}
 	
 	private static String getUserDefinedMultipleCharDelimiter(Matcher m) {
-		String delimiters = m.group(2);
+		String delimiters = m.group(1);
 		Matcher delimiterMatcher = Pattern.compile("\\[(.+?)\\]").matcher(delimiters);
 		StringBuffer allDelimiters = new StringBuffer();
 		
