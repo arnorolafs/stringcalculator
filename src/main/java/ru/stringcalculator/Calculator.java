@@ -14,60 +14,12 @@ public class Calculator {
 	private static final int MAX_NUMBER = 1000;
 	
 	public static int add(String text) {
-		Matcher m = Pattern.compile(DELIMITER_REGEX_PATTERN).matcher(text);
-		String delimiters = getDelimiter(m);
-		String numberString = getNumberString(text, m.reset());
+		DelimiterHandler  delimiterHandler = new DelimiterHandler();
+		String delimiters = delimiterHandler.getDelimiter(text);
+		String numberString = delimiterHandler.getNumberString(text);
 
 
 		return getSum(getNumbers(numberString, delimiters));
-	}
-	
-	private static String getNumberString(String numbers, Matcher m) {
-		if (m.find()) {
-			return m.group(REGEX_NUMBER_OF_NUMBER_STRING);
-		} else {
-			return numbers;
-		}
-	}
-	
-	private static String getDelimiter(Matcher m) {
-		if (m.find()) {
-			return getUserDefinedDelimiter(m);
-		} else {
-			return PREDEFINED_DELIMITER;
-		}
-	}
-	
-	private static String getUserDefinedDelimiter(Matcher m) {
-		if (m.group(REGEX_NUMBER_OF_SINGLE_CHAR_DELIMITER) != null) {
-			return getUserDefinedSingleCharDelimiter(m);
-		} else {
-			return getUserDefinedMultipleCharDelimiter(m);
-		}
-	}
-	
-	private static String getUserDefinedSingleCharDelimiter(Matcher m) {
-		return Pattern.quote(m.group(REGEX_NUMBER_OF_SINGLE_CHAR_DELIMITER));
-	}
-	
-	private static String getUserDefinedMultipleCharDelimiter(Matcher m) {
-		String delimiters = m.group(1);
-		Matcher delimiterMatcher = Pattern.compile("\\[(.+?)\\]").matcher(delimiters);
-		StringBuffer allDelimiters = new StringBuffer();
-		
-		while (delimiterMatcher.find()) {
-			addOneUserDefinedDelimiterToAllDelimiters(delimiterMatcher, allDelimiters);
-		}
-		
-		return allDelimiters.toString();
-	}
-	
-	private static void addOneUserDefinedDelimiterToAllDelimiters(Matcher delimiterMatcher, StringBuffer allDelimiters) {
-		if (allDelimiters.length() == 0) {
-				allDelimiters.append(Pattern.quote(delimiterMatcher.group(1)));
-			} else {
-				allDelimiters.append("|" + Pattern.quote(delimiterMatcher.group(1)));
-			}
 	}
 	
 	private static String[] getNumbers(String numbers, String delimiters) {
