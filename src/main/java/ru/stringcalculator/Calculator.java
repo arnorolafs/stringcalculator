@@ -56,14 +56,18 @@ public class Calculator {
 		StringBuffer allDelimiters = new StringBuffer();
 		
 		while (delimiterMatcher.find()) {
-			if (allDelimiters.length() == 0) {
+			addOneUserDefinedDelimiterToAllDelimiters(delimiterMatcher, allDelimiters);
+		}
+		
+		return allDelimiters.toString();
+	}
+	
+	private static void addOneUserDefinedDelimiterToAllDelimiters(Matcher delimiterMatcher, StringBuffer allDelimiters) {
+		if (allDelimiters.length() == 0) {
 				allDelimiters.append(Pattern.quote(delimiterMatcher.group(1)));
 			} else {
 				allDelimiters.append("|" + Pattern.quote(delimiterMatcher.group(1)));
 			}
-		}
-		
-		return allDelimiters.toString();
 	}
 	
 	private static String[] getNumbers(String numbers, String delimiters) {
